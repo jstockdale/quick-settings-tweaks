@@ -1040,7 +1040,7 @@ msgid "Privacy indicators style"
 msgstr "프라이버시 인디케이터 스타일"
 
 #: target/out/prefPages/layout.js:764
-msgid "Use monochrome or shell accent color on privarcy indicators"
+msgid "Use monochrome or shell accent color on privacy indicators"
 msgstr "단색 또는 셸의 강조 색상을 프라이버시 인디케이터에 아이콘 색으로 사용합니다"
 
 #: target/out/prefPages/layout.js:767

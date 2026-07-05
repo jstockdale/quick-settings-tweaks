@@ -1022,7 +1022,7 @@ msgid "Privacy indicators style"
 msgstr ""
 
 #: target/out/prefPages/layout.js:764
-msgid "Use monochrome or shell accent color on privarcy indicators"
+msgid "Use monochrome or shell accent color on privacy indicators"
 msgstr ""
 
 #: target/out/prefPages/layout.js:767
