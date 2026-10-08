@@ -581,18 +581,18 @@ class MediaItem extends MessageList.Message {
 	// Create and update control buttons
 	_createControlButtons() {
 		const options = this._options
-		if (options.showPrevButton) this._prevButton ??= this.addEventStop(this.addMediaControl(
+		if (options.showPrevButton) this._prevButton ??= this.addMediaControl(
 			'media-skip-backward-symbolic',
 			() => this._player.previous()
-		) as unknown as St.Button)
-		if (options.showPauseButton) this._pauseButton ??= this.addEventStop(this.addMediaControl(
+		) as unknown as St.Button
+		if (options.showPauseButton) this._pauseButton ??= this.addMediaControl(
 			'',
 			() => this._player.playPause()
-		) as unknown as St.Button)
-		if (options.showNextButton) this._nextButton ??= this.addEventStop(this.addMediaControl(
+		) as unknown as St.Button
+		if (options.showNextButton) this._nextButton ??= this.addMediaControl(
 			'media-skip-forward-symbolic',
 			() => this._player.next()
-		) as unknown as St.Button)
+		) as unknown as St.Button
 		const opacity = options.contorlOpacity
 		if (this._nextButton) this._nextButton.opacity = opacity
 		if (this._prevButton) this._prevButton.opacity = opacity

@@ -13,8 +13,15 @@ export abstract class Drag extends St.Bin {
 	dfunc_drag_end: (event: Drag.Event)=>void
 	dfunc_drag_start: (event: Drag.Event)=>void
 	dfunc_drag_motion: (event: Drag.Event)=>void
-
+	// changed to work on gnome 50
 	_dragStart(event: Clutter.Event): boolean {
+		let source = event.get_source()
+		while (source && source !== this) {
+			if (source instanceof St.Button)
+				return Clutter.EVENT_PROPAGATE
+			source = source.get_parent()
+		}
+
 		if (this._dragging) return Clutter.EVENT_PROPAGATE
 		this._dragging = true
 		this._dragIsClick = true
