@@ -1,22 +1,30 @@
 import GObject from 'gi://GObject'
-import Shell from 'gi://Shell'
 import Cogl from 'gi://Cogl'
 import Clutter from 'gi://Clutter'
 import Global from '../../global.js'
 
 // #region RoundClipEffect
-export class RoundClipEffect extends Shell.GLSLEffect {
+export class RoundClipEffect extends Clutter.ShaderEffect {
 	static uniforms: RoundClipEffect.Uniforms|null = null
-
-	vfunc_build_pipeline (): void {
+	
+	vfunc_get_static_snippet (): Cogl.Snippet {
 		const [declarations, code] = Global.GetShader("media/rounded_corners.frag")
-		this.add_glsl_snippet(
+		return Cogl.Snippet.new(
 			// FIXME: waitting for type definition update
 			Cogl.SnippetHook.FRAGMENT as any,
 			declarations,
-			code,
-			false
+			code
 		)
+	}
+	
+	get_uniform_location (name: string): number {
+		const pipeline = this.get_pipeline() as any
+		return pipeline.get_uniform_location(name)
+	}
+
+	set_uniform_float (uniform: number, n_components: number, value: number[]): void {
+		const pipeline = this.get_pipeline() as any
+		pipeline.set_uniform_float(uniform, n_components, value)
 	}
 
 	vfunc_paint_target (node: Clutter.PaintNode, ctx: Clutter.PaintContext) {
